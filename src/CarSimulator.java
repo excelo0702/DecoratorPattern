@@ -1,21 +1,19 @@
 import CarClasses.Car;
 import CarClasses.Sedan;
+import Decorators.Alexa;
+import Decorators.Refrigerator;
 
 public class CarSimulator {
     public static void main(String[] args){
         Car sedan = new Sedan();
-        sedan.cost();
+        System.out.println("Total Cost: "+sedan.cost()+"\n\n");
 
-        System.out.println("\nHey!! Can you please install refrigerator and healthMonitor\n");
-        sedan.setHealthMonitor(true);
-        sedan.setRefrigerator(true);
-        sedan.cost();
+        System.out.println("Please Add refrigerator \n");
+        sedan = new Refrigerator(sedan);
+        System.out.println("Total Cost: "+sedan.cost()+"\n\n");
 
-        //Please add other classes method definition
-
-        //this is a better approach than previous ones. But in future when we have more features to add
-        // we need to make changes in Car class. Here we are violating our first design principle.
-        // Thats why this is also not the way to go
-
+        System.out.println("Lets Add Alexa too\n");
+        sedan = new Alexa(sedan);
+        System.out.println("Total Cost: "+sedan.cost()+"\n\n");
     }
 }
